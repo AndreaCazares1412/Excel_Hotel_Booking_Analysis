@@ -30,12 +30,39 @@ The dataset used for this project  is available via my Kaggle: [Hotel Reservatio
 * 🏨 Room Type and Segment Type 
 * 👥 Guests
 
-## 1️⃣ What are the months with the highest average price and the highest number of bookings?
+## 🔍 Power Query (ETL) and DAX Integration: Data Extraction, Transformation, and Analysis
 
-### 🔍 Skill: Power Query (ETL)
+📥 **Extract**: I first used Power Query to extract the original data (Hotel_Bookings.xlsx), filtering for the year 2018 and selecting data with complete information, specifically filtering the stay_days column to exclude entries with 0 days, as these were not logical. This ensured that the data I worked with was relevant and accurate.
 
-* 📥 Extract: I first used Power Query to extract the original data (Hotel_Bookings.xlsx), filtering for the year 2018 and selecting data with complete information, specifically filtering the stay_days column to exclude entries with 0 days.
+🔄 **Transform**: After extracting the data, I transformed the query by adjusting column types, removing unnecessary columns, and adding new ones relevant for analysis. I also cleaned the text by removing specific unwanted words and trimming excess whitespace. This helped to standardize the dataset and improve its usability for analysis.
 
-* 🔄 Transform: Then, I transformed the query by changing column types, removing unnecessary columns, adding new columns relevant for the anlysis, cleaning text to eliminate specific words, and trimming excess whitespace.
+📊 Reservations_Stay_Days
 
-📊 data_jobs_all
+![Texto alternativo](hotel_analysis_images/tranformation_power_query.png)
+
+🔗 **Load**: Finally, I loaded both transformed queries into the workbook, setting the foundation for my subsequent analysis.
+
+🔀 **Integrating Power Query with Power Pivot for DAX Calculations**: To further enhance the analysis, I connected the transformed data in Power Query to Power Pivot, enabling advanced calculations using DAX. This allowed me to create powerful metrics, aggregations, and pivot tables to gain deeper insights into the hotel bookings data.
+
+![Texto alternativo](hotel_analysis_images/conection_power_pivot.png)
+
+  
+## 📊Analysis
+
+### 1️⃣ What are the months with the highest average price and the highest number of bookings?
+
+* October has the highest number of bookings, with more than 3,300 reservations, indicating peak demand during this month.
+* June follows closely with a median price of 115€,  indicating a strong season but with a slightly lower average price compared to September.
+* September has the highest median room price, at 119€ which is higher than the other months.
+
+![Texto alternativo](hotel_analysis_images/1.png)
+
+### 🤔 So What
+* October leads in bookings, while September sees the highest room prices, indicating different strategies for peak seasons. October likely represents the volume-driven peak, while September may focus on higher-value bookings.
+
+### 2️⃣ How do cancellations affect monthly revenue and loss percentages throughout the year?
+
+
+![Texto alternativo](hotel_analysis_images/2.png)
+
+
