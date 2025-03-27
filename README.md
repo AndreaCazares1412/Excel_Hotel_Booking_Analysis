@@ -203,3 +203,9 @@ Not Cancellation Rate :=
 
 ### 🤔 So What
 * The majority of bookings come from new guests, whose higher cancellations highlight the importance of improving retention efforts. For repeated guests, focusing on maintaining loyalty can further decrease cancellations and ensure a steady stream of confirmed bookings.
+
+## Conclusion
+
+This project analyzed hotel booking and cancellation data to uncover trends in booking behaviors. Using Power BI, DAX, and Power Query, I explored how factors like room price, lead time, and guest type influence cancellation rates and revenue. Key insights include that higher room prices lead to higher cancellation rates, and new guests tend to cancel more often than repeated guests.
+
+These findings offer actionable insights for optimizing pricing strategies and reducing cancellations, which can help improve revenue. This analysis serves as a practical example for professionals in the hospitality and data analysis sectors, providing valuable strategies for better decision-making.
