@@ -8,9 +8,7 @@ This analysis aims to explore hotel booking data, focusing on understanding canc
 1. What are the months with the highest average price and the highest number of bookings?
 2. How do cancellations impact monthly revenue and the percentage of revenue lost throughout the year?
 3. How does reservation lead time affect booking status (cancelled vs. not cancelled)?
-    3.1 How does lead time affect the probability of cancellation?
-4. How does reservation room price affect booking status (cancelled vs. not cancelled)?
-    4.1 How does room price influence the probability of cancellation?
+4. How does room price influence the probability of cancellation?
 5. How do cancellation rates differ between new and repeated guests?
 
 ### Excel Skills Used
@@ -49,7 +47,7 @@ The dataset used for this project  is available via my Kaggle: [Hotel Reservatio
   
 ## 📊Analysis
 
-### 1️⃣ What are the months with the highest average price and the highest number of bookings?
+## 1️⃣ What are the months with the highest average price and the highest number of bookings?
 
 ### 📈Pivot Table
 * 📊 I moved the month_name to the rows area, total_reservations and median_price_room into the values area.
@@ -71,7 +69,7 @@ Median Price Room := MEDIAN(Reservation_Stay_Days[avg_price_per_room])
 ### 🤔 So What
 * **October** leads in bookings, while September sees the highest room prices, indicating different strategies for peak seasons. October likely represents the volume-driven peak, while September may focus on higher-value bookings.
 
-### 2️⃣ How do cancellations impact monthly revenue and the percentage of revenue lost throughout the year?
+## 2️⃣ How do cancellations impact monthly revenue and the percentage of revenue lost throughout the year?
 
 ### 📈Pivot Table
 * 📊 I moved the booking_status (Canceled and Not Canceled) and month_name to the rows area, and the total_revenue into the values area.
@@ -108,7 +106,7 @@ DIVIDE(
 
 * October has the highest bookings but also the highest cancellation rate, impacting revenue. June, with fewer cancellations, generates more stable revenue despite lower bookings. Focusing on reducing cancellations, especially in high-demand months like October, could optimize revenue.
 
-### 3️⃣ How does reservation lead time affect booking status (cancelled vs. not cancelled)?
+## 3️⃣ How does reservation lead time affect booking status (cancelled vs. not cancelled)?
 
 ### 📈Pivot Table
 * 📊 I moved the booking_status (Canceled and Not Canceled) and month_name to the rows area, total_bookings_count and median_lead_time into the values area.
@@ -146,4 +144,26 @@ Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
 
 * Shorter lead times are associated with more stable bookings, which could help forecast and plan more effectively for high-demand months with fewer cancellations.
 
-### 4️⃣  How does reservation room price affect booking status (cancelled vs. not cancelled)?
+## 4️⃣  How does room price influence the probability of cancellation?
+
+### 📈Pivot Table
+* 📊 I moved the average_price_room to the rows area, canceled and not_canceled into the values area.
+
+### 🧮 Price Bucket
+
+* For the purpose of analyzing cancellation probabilities based on room prices, I divided the average room prices into distinct buckets to capture trends across different pricing segments. The chosen price ranges are as follows:
+
+<img src="hotel_analysis_images/price_probability.png" width="500" height="100">
+
+* As room price increases, the cancellation probability rises. Rooms priced between 201€ and 300€ have the highest cancellation probability at 49%, while rooms under 100€ have the lowest at 26%.
+
+* Rooms priced between 101€ and 200€ show a cancellation probability of 40%.
+
+* A room priced at >400€ (540€) shows a 100% cancellation rate, but this is based on a very small sample.
+
+<img src="hotel_analysis_images/6.1.png" width="600" height="350">
+
+### 🤔 So What
+* Understanding that higher-priced rooms are more likely to be canceled can help in refining cancellation policies and forecasting revenue.
+
+## 5️⃣ How do cancellation rates differ between new and repeated guests?
