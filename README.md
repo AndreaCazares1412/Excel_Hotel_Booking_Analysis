@@ -53,7 +53,7 @@ The dataset used for this project  is available via Kaggle: [Hotel Reservations 
 * 📊 I moved the `month_name` to the rows area, `total_reservations` and `median_price_room` into the values area.
 
 ### 🧮 DAX
-To calculate the `median_price_room` each month I used DAX.
+* To calculate the `median_price_room` each month I used DAX.
 
 ```
 Median Price Room := MEDIAN(Reservation_Stay_Days[avg_price_per_room])
@@ -202,4 +202,4 @@ Not Cancellation Rate :=
 <img src="hotel_analysis_images/8.png" width="800" height="300">
 
 ### 🤔 So What
-The majority of bookings come from new guests, whose higher cancellations highlight the importance of improving retention efforts. For repeated guests, focusing on maintaining loyalty can further decrease cancellations and ensure a steady stream of confirmed bookings.
+* The majority of bookings come from new guests, whose higher cancellations highlight the importance of improving retention efforts. For repeated guests, focusing on maintaining loyalty can further decrease cancellations and ensure a steady stream of confirmed bookings.
