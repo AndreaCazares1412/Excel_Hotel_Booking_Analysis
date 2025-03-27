@@ -9,7 +9,7 @@ This analysis aims to explore hotel booking data, focusing on understanding canc
 2. How do cancellations impact monthly revenue and the percentage of revenue lost throughout the year?
 3. How does reservation lead time affect booking status (cancelled vs. not cancelled)?
 4. How does room price influence the probability of cancellation?
-5. How do cancellation rates differ between new and repeated guests?
+5. How does the cancellation rate relative to canceled bookings differ between new and repeated guests?
 
 ### Excel Skills Used
 The following Excel skills were utilized for analysis:
@@ -21,7 +21,7 @@ The following Excel skills were utilized for analysis:
 * 💪 Power Pivot 
 
 ### Hotel Reservations Dataset
-The dataset used for this project  is available via my Kaggle: [Hotel Reservations Dataset by Ahsan Raza](https://www.kaggle.com/datasets/ahsan81/hotel-reservations-classification-dataset). It includes detailed information on:
+The dataset used for this project  is available via Kaggle: [Hotel Reservations Dataset by Ahsan Raza](https://www.kaggle.com/datasets/ahsan81/hotel-reservations-classification-dataset). It includes detailed information on:
 
 * 👨‍💼 Booking ID, date and status 
 * 💰 Average Room Prices 
@@ -30,11 +30,11 @@ The dataset used for this project  is available via my Kaggle: [Hotel Reservatio
 
 ## 🔍 Power Query (ETL) and DAX Integration: Data Extraction, Transformation, and Analysis
 
-📥 **Extract**: I first used Power Query to extract the original data (Hotel_Bookings.xlsx), filtering for the year 2018 and selecting data with complete information, specifically filtering the stay_days column to exclude entries with 0 days, as these were not logical. This ensured that the data I worked with was relevant and accurate.
+📥 **Extract**: I first used Power Query to extract the original data (`Hotel_Bookings.xlsx`), filtering for the year 2018 and selecting data with complete information, specifically filtering the `stay_days` column to exclude entries with 0 days. This ensured that the data I worked with was relevant and accurate.
 
 🔄 **Transform**: After extracting the data, I transformed the query by adjusting column types, removing unnecessary columns, and adding new ones relevant for analysis. I also cleaned the text by removing specific unwanted words and trimming excess whitespace. This helped to standardize the dataset and improve its usability for analysis.
 
-📊 Reservations_Stay_Days
+📊 **Reservations_Stay_Days**
 
 ![Texto alternativo](hotel_analysis_images/tranformation_power_query.png)
 
@@ -50,37 +50,37 @@ The dataset used for this project  is available via my Kaggle: [Hotel Reservatio
 ## 1️⃣ What are the months with the highest average price and the highest number of bookings?
 
 ### 📈Pivot Table
-* 📊 I moved the month_name to the rows area, total_reservations and median_price_room into the values area.
+* 📊 I moved the `month_name` to the rows area, `total_reservations` and `median_price_room` into the values area.
 
 ### 🧮 DAX
-To calculate the median_price_room each month I used DAX.
+To calculate the `median_price_room` each month I used DAX.
 
 ```
 Median Price Room := MEDIAN(Reservation_Stay_Days[avg_price_per_room])
 ```
 
 ### 💡 Insights
-* October has the highest number of bookings, with more than 3,300 reservations, indicating peak demand during this month.
-* June follows closely with a median price of 115€,  indicating a strong season but with a slightly lower average price compared to September.
-* September has the highest median room price, at 119€ which is higher than the other months.
+* **October** has the highest number of bookings, with more than 3,300 reservations, indicating peak demand during this month.
+* **June** follows closely with a median price of 115€,  indicating a strong season but with a slightly lower average price compared to **September**.
+* **September** has the highest median room price, at 119€ which is higher than the other months.
 
 ![Texto alternativo](hotel_analysis_images/1.png)
 
 ### 🤔 So What
-* **October** leads in bookings, while September sees the highest room prices, indicating different strategies for peak seasons. October likely represents the volume-driven peak, while September may focus on higher-value bookings.
+* **October** leads in bookings, while **September** sees the highest room prices, indicating different strategies for peak seasons. **October** likely represents the volume-driven peak, while **September** may focus on higher-value bookings.
 
 ## 2️⃣ How do cancellations impact monthly revenue and the percentage of revenue lost throughout the year?
 
 ### 📈Pivot Table
-* 📊 I moved the booking_status (Canceled and Not Canceled) and month_name to the rows area, and the total_revenue into the values area.
+* 📊 I moved the `booking_status` (Canceled and Not Canceled) and `month_name` to the rows area, and the `total_revenue` into the values area.
 
 ### 🧮 DAX
-* To calculate the total_revenue for each month:
+* To calculate the `total_revenue` for each month:
 
 ```
 Total revenue := [Median Price Room]*COUNT(Reservation_Stay_Days[Booking_ID])
 ```
-* To calculate the loss_percentage from cancellations for each month:
+* To calculate the `loss_percentage` from cancellations for each month:
 
 ```
 Loss from Cancellations := 
@@ -93,7 +93,7 @@ DIVIDE(
 
 ### 💡 Insights
 
-* **June** achieves the highest revenue, with strong bookings (almost as many as October), but its cancellation rate is much lower (71%) compared to October's 91%. This indicates that while October has a higher volume of bookings, it also experiences significantly more cancellations, affecting overall revenue. It benefits from a more stable cancellation rate, which allows for more consistent revenue generation.
+* **June** achieves the highest revenue, with strong bookings (almost as many as **October**), but its cancellation rate is much lower (71%) compared to October's 91%. This indicates that while **October** has a higher volume of bookings, it also experiences significantly more cancellations, affecting overall revenue. It benefits from a more stable cancellation rate, which allows for more consistent revenue generation.
 
 * **October**, with the highest number of bookings, likely benefits from a higher volume-driven strategy, but the 91% cancellation rate suggests that more cancellations are reducing its potential revenue. The high volume in October could be a risk if not managed with strategies to reduce cancellations.
 
@@ -104,20 +104,20 @@ DIVIDE(
 
 ### 🤔 So What
 
-* October has the highest bookings but also the highest cancellation rate, impacting revenue. June, with fewer cancellations, generates more stable revenue despite lower bookings. Focusing on reducing cancellations, especially in high-demand months like October, could optimize revenue.
+* **October** has the highest bookings but also the highest cancellation rate, impacting revenue. June, with fewer cancellations, generates more stable revenue despite lower bookings. Focusing on reducing cancellations, especially in high-demand months like October, could optimize revenue.
 
 ## 3️⃣ How does reservation lead time affect booking status (cancelled vs. not cancelled)?
 
 ### 📈Pivot Table
-* 📊 I moved the booking_status (Canceled and Not Canceled) and month_name to the rows area, total_bookings_count and median_lead_time into the values area.
+* 📊 I moved the `booking_status` (Canceled and Not Canceled) and month_name to the rows area, `total_bookings_count` and `median_lead_time` into the values area.
 
 ### 🧮 DAX
-* To calculate the median_lead_time for each month:
+* To calculate the `median_lead_time` for each month:
 
 ```
 Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
 ```
-* To calculate the cancellation_probability:
+* To calculate the `cancellation_probability`:
 
 ```
   Cancellation Probability := 
@@ -129,9 +129,9 @@ Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
 
 * Reservation lead time is positively correlated with cancellations. As the lead time increases, the probability of cancellation rises.
 
-* September and October show the highest lead times and cancellations. These months have longer booking periods, but they also show higher cancellations.
+* **September** and **October** show the highest lead times and cancellations. These months have longer booking periods, but they also show higher cancellations.
 
-* February, January and March have low lead times and cancellations, indicating that shorter booking windows are associated with fewer cancellations.
+* **February**, **January** and **March** have low lead times and cancellations, indicating that shorter booking windows are associated with fewer cancellations.
 
 * The not cancelled bookings tend to cluster around lower lead times, showing that guests with short-term bookings are more likely to stick to their reservations.
 
@@ -140,16 +140,16 @@ Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
 
 
 ### 🤔 So What
-* Longer lead times result in a higher likelihood of cancellations, which suggests that strategies such as reducing lead times or offering incentives to prevent cancellations could be considered, especially for months like September and October.
+* Longer lead times result in a higher likelihood of cancellations, which suggests that strategies such as reducing lead times or offering incentives to prevent cancellations could be considered, especially for months like **September** and **October**.
 
 * Shorter lead times are associated with more stable bookings, which could help forecast and plan more effectively for high-demand months with fewer cancellations.
 
 ## 4️⃣  How does room price influence the probability of cancellation?
 
 ### 📈Pivot Table
-* 📊 I moved the average_price_room to the rows area, canceled and not_canceled into the values area.
+* 📊 I moved the `average_price_room` to the rows area, canceled and not_canceled into the values area.
 
-### 🧮 Price Bucket
+### 💲 Price Bucket
 
 * For the purpose of analyzing cancellation probabilities based on room prices, I divided the average room prices into distinct buckets to capture trends across different pricing segments. The chosen price ranges are as follows:
 
@@ -166,4 +166,22 @@ Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
 ### 🤔 So What
 * Understanding that higher-priced rooms are more likely to be canceled can help in refining cancellation policies and forecasting revenue.
 
-## 5️⃣ How do cancellation rates differ between new and repeated guests?
+## 5️⃣ How does the cancellation rate relative to canceled bookings differ between new and repeated guests?
+
+### For New Guests:
+
+* New guests make up the majority of reservations throughout the year. As the year progresses, the cancellation rates begin to increase between second and third quarter.
+
+* New guests, despite making up the majority of bookings, tend to cancel more frequently. This suggests that new bookings are more uncertain and subject to higher cancellation rates.
+
+### For Repeated Guests:
+
+* Repeated guests, while having a lower cancellation rate, represent a much smaller proportion of the total bookings. In general 80% to 100% of bookings were not cancelled throughout the year, but these had fewer total bookings overall.
+
+* Repeated guests, though fewer in number, show much lower cancellation rates, indicating higher loyalty and reliability when it comes to keeping bookings.
+
+<img src="hotel_analysis_images/7.png" width="800" height="300">
+<img src="hotel_analysis_images/8.png" width="800" height="300">
+
+### 🤔 So What
+The majority of bookings come from new guests, whose higher cancellation rates highlight the importance of improving retention efforts. For repeated guests, focusing on maintaining loyalty can further decrease cancellations and ensure a steady stream of confirmed bookings.
