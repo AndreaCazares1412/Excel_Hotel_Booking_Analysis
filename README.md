@@ -7,7 +7,7 @@ This analysis aims to explore hotel booking data, focusing on understanding canc
 
 1. What are the months with the highest average price and the highest number of bookings?
 2. How do cancellations impact monthly revenue and the percentage of revenue lost throughout the year?
-3. How does reservation lead time affect booking status (cancelled vs. not cancelled)?
+3. How does reservation lead time affect booking status (canceled vs. not canceled)?
 4. How does room price influence the probability of cancellation?
 5. How does the cancellation rate relative to canceled bookings differ between new and repeated guests?
 
@@ -106,10 +106,10 @@ DIVIDE(
 
 * **October** has the highest bookings but also the highest cancellation rate, impacting revenue. June, with fewer cancellations, generates more stable revenue despite lower bookings. Focusing on reducing cancellations, especially in high-demand months like October, could optimize revenue.
 
-## 3️⃣ How does reservation lead time affect booking status (cancelled vs. not cancelled)?
+## 3️⃣ How does reservation lead time affect booking status (canceled vs. not canceled)?
 
 ### 📈Pivot Table
-* 📊 I moved the `booking_status` (Canceled and Not Canceled) and month_name to the rows area, `total_bookings_count` and `median_lead_time` into the values area.
+* 📊 I moved the `booking_status` (Canceled and Not Canceled) and `month_name` to the rows area, `total_bookings_count` and `median_lead_time` into the values area.
 
 ### 🧮 DAX
 * To calculate the `median_lead_time` for each month:
@@ -133,7 +133,7 @@ Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
 
 * **February**, **January** and **March** have low lead times and cancellations, indicating that shorter booking windows are associated with fewer cancellations.
 
-* The not cancelled bookings tend to cluster around lower lead times, showing that guests with short-term bookings are more likely to stick to their reservations.
+* The not canceled bookings tend to cluster around lower lead times, showing that guests with short-term bookings are more likely to stick to their reservations.
 
 <img src="hotel_analysis_images/3.png" width="600" height="300">
 <img src="hotel_analysis_images/4.png" width="600" height="300">
@@ -147,7 +147,7 @@ Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
 ## 4️⃣  How does room price influence the probability of cancellation?
 
 ### 📈Pivot Table
-* 📊 I moved the `average_price_room` to the rows area, canceled and not_canceled into the values area.
+* 📊 I moved the `average_price_room` to the rows area, `canceled` and `not_canceled` into the values area.
 
 ### 💲 Price Bucket
 
@@ -168,20 +168,38 @@ Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
 
 ## 5️⃣ How does the cancellation rate relative to canceled bookings differ between new and repeated guests?
 
+### 📈Pivot Table
+* 📊 I moved the `month_name` to the rows area, `Canceled` and `Not_Canceled` into the values area.
+
+### 🧮 DAX
+* To calculate the `canceled` cancellation rate for each month:
+
+```
+Cancellation Rate := 
+    DIVIDE(SUM(Reservation_Stay_Days[Canceled]), SUM(Reservation_Stay_Days[Canceled]) + SUM(Reservation_Stay_Days[Not_Canceled]))
+```
+* To calculate the `Not_Canceled` not cancellation rate for each month:
+
+```
+Not Cancellation Rate := 
+    DIVIDE(SUM(Reservation_Stay_Days[Not_Canceled]), SUM(Reservation_Stay_Days[Not_Canceled]) + SUM(Reservation_Stay_Days[Canceled]))
+```
+
+
 ### For New Guests:
 
-* New guests make up the majority of reservations throughout the year. As the year progresses, the cancellation rates begin to increase between second and third quarter.
+* New guests make up the majority of reservations throughout the year. As the year progresses, the cancellations begin to increase between second and third quarter.
 
-* New guests, despite making up the majority of bookings, tend to cancel more frequently. This suggests that new bookings are more uncertain and subject to higher cancellation rates.
+* New guests, despite making up the majority of bookings, tend to cancel more frequently. This suggests that new bookings are more uncertain and subject to higher cancellations.
 
 ### For Repeated Guests:
 
-* Repeated guests, while having a lower cancellation rate, represent a much smaller proportion of the total bookings. In general 80% to 100% of bookings were not cancelled throughout the year, but these had fewer total bookings overall.
+* Repeated guests, while having lower cancellations, represent a much smaller proportion of the total bookings. In general 80% to 100% of bookings were not canceled throughout the year, but these had fewer total bookings overall.
 
-* Repeated guests, though fewer in number, show much lower cancellation rates, indicating higher loyalty and reliability when it comes to keeping bookings.
+* Repeated guests, though fewer in number, show much lower cancellations, indicating higher loyalty and reliability when it comes to keeping bookings.
 
 <img src="hotel_analysis_images/7.png" width="800" height="300">
 <img src="hotel_analysis_images/8.png" width="800" height="300">
 
 ### 🤔 So What
-The majority of bookings come from new guests, whose higher cancellation rates highlight the importance of improving retention efforts. For repeated guests, focusing on maintaining loyalty can further decrease cancellations and ensure a steady stream of confirmed bookings.
+The majority of bookings come from new guests, whose higher cancellations highlight the importance of improving retention efforts. For repeated guests, focusing on maintaining loyalty can further decrease cancellations and ensure a steady stream of confirmed bookings.
