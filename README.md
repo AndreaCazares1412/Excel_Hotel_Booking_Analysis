@@ -127,6 +127,7 @@ Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
     )
 ```
 
+### 💡 Insights
 * Reservation lead time is positively correlated with cancellations. As the lead time increases, the probability of cancellation rises.
 
 * **September** and **October** show the highest lead times and cancellations. These months have longer booking periods, but they also show higher cancellations.
@@ -155,6 +156,8 @@ Median Lead Time := MEDIAN(Reservation_Stay_Days[lead_time])
 
 <img src="hotel_analysis_images/price_probability.png" width="500" height="100">
 
+
+### 💡 Insights
 * As room price increases, the cancellation probability rises. Rooms priced between 201€ and 300€ have the highest cancellation probability at 49%, while rooms under 100€ have the lowest at 26%.
 
 * Rooms priced between 101€ and 200€ show a cancellation probability of 40%.
@@ -185,6 +188,8 @@ Not Cancellation Rate :=
     DIVIDE(SUM(Reservation_Stay_Days[Not_Canceled]), SUM(Reservation_Stay_Days[Not_Canceled]) + SUM(Reservation_Stay_Days[Canceled]))
 ```
 
+
+### 💡 Insights
 
 ### For New Guests:
 
