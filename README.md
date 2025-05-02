@@ -1,7 +1,12 @@
 # Hotel Booking Cancellation Analysis
 
 ### Objective
-This analysis aims to explore hotel booking data, focusing on understanding cancellation rates, their impact on revenue, and key drivers for cancellations. The insights derived from this analysis are aimed at identifying strategies to minimize cancellations and improve revenue streams for the hotel.
+This analysis aims to explore hotel booking data, focusing on understanding cancellation rates, their impact on revenue, and key drivers for cancellations. The goal is to identify actionable strategies that can help reduce cancellations and improve the hotel's revenue performance.
+
+To carry out this analysis, I used Excel for its flexibility in data exploration and visualization, Power Query to clean and transform large datasets efficiently, and Power Pivot to build a robust data model and perform advanced calculations using DAX. Together, these tools enabled a scalable and reproducible approach to analyzing business data in a familiar yet powerful environment.
+
+📌 Why Excel, Power Pivot & Power Query?
+The dataset contained fewer than 3,000 rows — a size well-suited for spreadsheet-based tools without sacrificing performance. I also wanted to simulate the type of data challenges a local or small-to-medium-sized business might face, using tools they are more likely to rely on. This setup reflects real-world constraints while still enabling meaningful insights and modeling.
 
 ### Questions to Analyze
 
