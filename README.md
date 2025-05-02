@@ -1,7 +1,7 @@
 # Hotel Booking Cancellation Analysis
 
 ### Objective
-This analysis aims to explore hotel booking data, focusing on understanding cancellation rates, their impact on revenue, and key drivers for cancellations. The goal is to identify actionable strategies that can help reduce cancellations and improve the hotel's revenue performance.
+This analysis aims to explore hotel booking data, focusing on understanding cancellation rates, their impact on revenue, and key drivers for cancellations. The goal is to identify actionable strategies that can help reduce cancellations and improve the hotel's revenue performance, particularly for revenue managers, marketing teams, and hotel operations staff who are responsible for driving profitability and enhancing guest retention.
 
 To carry out this analysis, I used Excel for its flexibility in data exploration and visualization, Power Query to clean and transform large datasets efficiently, and Power Pivot to build a robust data model and perform advanced calculations using DAX. Together, these tools enabled a scalable and reproducible approach to analyzing business data in a familiar yet powerful environment.
 
@@ -218,4 +218,4 @@ Not Cancellation Rate :=
 
 This project analyzed hotel booking and cancellation data to uncover trends in booking behaviors. Using Power BI, DAX, and Power Query, I explored how factors like room price, lead time, and guest type influence cancellation rates and revenue. Key insights include that higher room prices lead to higher cancellation rates, and new guests tend to cancel more often than repeated guests.
 
-These findings offer actionable insights for optimizing pricing strategies and reducing cancellations, which can help improve revenue. This analysis serves as a practical example for professionals in the hospitality and data analysis sectors, providing valuable strategies for better decision-making.
+These findings offer actionable insights for optimizing pricing strategies and reducing cancellations, which can help improve revenue. The analysis can be particularly valuable for marketing teams looking to tailor campaigns, revenue managers aiming to adjust pricing and booking policies, and operations teams focused on minimizing last-minute cancellations. Additionally, it serves as a practical example for data analysts and hospitality professionals, demonstrating how to extract decision-ready insights from booking data.
